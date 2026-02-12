@@ -30,7 +30,7 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER (GLASSMORPHISM) --- */
+        /* --- HEADER --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
             padding: 25px 6%; display: flex; justify-content: space-between; align-items: center;
@@ -54,77 +54,118 @@
         }
         nav ul li a:hover, nav ul li a.active { color: var(--gold); }
 
-        /* --- HERO INVESTMENT --- */
+        /* --- HERO --- */
         .hero-investment {
             height: 70vh;
             background: linear-gradient(to bottom, rgba(5,5,5,0.4), rgba(5,5,5,1)), url('residcene.png');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; padding: 0 10%;
         }
-        .hero-investment span { color: var(--gold); text-transform: uppercase; letter-spacing: 6px; font-size: 0.9rem; margin-bottom: 20px; }
         .hero-investment h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5rem); max-width: 900px; line-height: 1.1; }
 
-        /* --- STATS OVERVIEW --- */
-        .investment-overview {
+        /* --- COMPARISON TABLE --- */
+        .comparison-container { padding: 100px 10%; background: #080808; }
+        .comparison-table { 
+            width: 100%; border-collapse: collapse; margin-top: 50px; 
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .comparison-table th { 
+            background: #111; color: var(--gold); padding: 25px; 
+            text-align: left; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.8rem; border-bottom: 1px solid var(--gold);
+        }
+        .comparison-table td { 
+            padding: 20px; border-bottom: 1px solid #1a1a1a; 
+            vertical-align: top; font-size: 0.9rem;
+        }
+        .col-crit { width: 20%; color: var(--gold); font-weight: bold; text-transform: uppercase; font-size: 0.7rem; }
+        .col-comp { width: 35%; color: var(--text-gray); }
+        .col-us { width: 45%; color: var(--white); background: rgba(212, 175, 55, 0.03); }
+
+        /* --- INFRASTRUCTURE STATS --- */
+        .stats-section {
             padding: 100px 10%;
-            display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
             background: var(--deep-black);
         }
-        .overview-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; }
-        .overview-text p { color: var(--text-gray); font-size: 1.1rem; max-width: 500px; }
-        
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .stat-item h4 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); margin-bottom: 5px; }
-        .stat-item p { text-transform: uppercase; font-size: 0.75rem; color: var(--text-gray); letter-spacing: 2px; }
+        .stats-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .stat-card { border-left: 1px solid var(--gold); padding-left: 20px; }
+        .stat-card h4 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); }
+        .stat-card p { text-transform: uppercase; font-size: 0.7rem; color: var(--text-gray); letter-spacing: 2px; }
 
-        /* --- PACKAGES SECTION --- */
-        .packages-section { padding: 100px 10%; background: #050505; text-align: center; }
-        .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+        /* --- SERVICES --- */
+        .services-detail { padding: 80px 10%; background: #080808; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; margin-top: 50px;
+        }
+        .service-group h3 { 
+            font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.6rem; 
+            margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 10px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .service-group ul { list-style: none; }
+        .service-group li { 
+            margin-bottom: 10px; color: var(--text-gray); font-size: 0.9rem; 
+            padding-left: 20px; position: relative; 
+        }
+        .service-group li::before { content: "•"; color: var(--gold); position: absolute; left: 0; }
+
+        /* --- PACKAGES --- */
+        .packages-section { padding: 100px 10%; text-align: center; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
         
         .package-card {
-            background: var(--soft-black); padding: 60px 40px; border: 1px solid #1a1a1a;
-            text-align: left; transition: var(--transition); position: relative;
+            background: var(--soft-black); padding: 50px 35px; border: 1px solid #1a1a1a;
+            text-align: left; transition: var(--transition);
         }
         .package-card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .package-card.featured { border: 1px solid var(--gold); }
+        .package-card.featured { border: 2px solid var(--gold); background: #0c0c0c; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
         
-        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 10px; }
-        .package-card .price { font-size: 2.5rem; font-family: 'Playfair Display', serif; margin-bottom: 30px; color: var(--white); }
-        .package-card .price span { font-size: 0.9rem; color: var(--text-gray); font-family: 'Lato'; }
+        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; }
+        .package-card .price { font-size: 2.2rem; font-family: 'Playfair Display', serif; margin-bottom: 30px; }
+        .package-card .price span { font-size: 0.8rem; color: var(--text-gray); letter-spacing: 1px; }
         
-        .feature-list { list-style: none; margin-bottom: 40px; }
-        .feature-list li { padding: 12px 0; border-bottom: 1px solid #222; font-size: 0.85rem; color: var(--text-gray); }
-        .feature-list li::before { content: "— "; color: var(--gold); }
+        .feature-list { list-style: none; margin-bottom: 40px; min-height: 220px; }
+        .feature-list li { padding: 10px 0; border-bottom: 1px solid #222; font-size: 0.85rem; color: var(--text-gray); }
 
         .btn-action {
-            display: block; text-align: center; padding: 18px;
+            display: block; text-align: center; padding: 15px;
             border: 1px solid var(--gold); color: var(--gold);
-            text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
             transition: 0.4s;
         }
-        .package-card.featured .btn-action { background: var(--gold); color: black; }
+        .package-card.featured .btn-action { background: var(--gold); color: black; font-weight: bold; }
 
-        /* --- FOOTER (IDENTIC CU INDEX) --- */
-        footer { background: #000; padding: 100px 10% 50px; border-top: 1px solid #111; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
-        .footer-col h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 0.8rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 15px; }
-        .footer-col a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .footer-col a:hover { color: var(--gold); padding-left: 5px; }
-
-        .newsletter input {
-            width: 100%; padding: 15px; background: transparent; border: 1px solid #222;
-            color: white; margin-bottom: 15px;
+        .elite-box {
+            margin: 80px 0; padding: 80px; border: 1px solid var(--gold);
+            background: linear-gradient(45deg, #050505, #151515); text-align: center;
         }
-        .btn-sub { width: 100%; padding: 15px; background: var(--gold); color: black; border: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-weight: bold; }
 
-        .copyright { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #111; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
+        /* --- EXTRA SERVICES TABLE --- */
+        .extra-table-container { padding: 100px 10%; }
+        .extra-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        .extra-table th { text-align: left; color: var(--gold); padding: 20px; border-bottom: 1px solid #333; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
+        .extra-table td { padding: 20px; border-bottom: 1px solid #111; color: var(--text-gray); font-size: 0.95rem; }
+        .price-tag { color: var(--white); font-weight: bold; text-align: right; }
+
+        footer { background: #000; padding: 80px 10% 40px; border-top: 1px solid #111; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
+        .footer-col h4 { font-family: 'Playfair Display', serif; color: var(--white); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--gold); }
+        
+        .btn-sub { background: var(--gold); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 0.7rem; margin-top: 10px; width: 100%; }
+        input[type="email"] { width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; outline: none; }
+
+        .copyright { margin-top: 80px; border-top: 1px solid #111; padding-top: 30px; text-align: center; color: #444; font-size: 0.7rem; letter-spacing: 2px; }
 
         @media (max-width: 1024px) {
-            .investment-overview, .packages-grid, .footer-grid { grid-template-columns: 1fr; }
-            .hero-investment h1 { font-size: 3.5rem; }
-            nav { display: none; }
+            .stats-section, .footer-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -135,83 +176,248 @@
             <img src="logo.png" alt="Logo" class="logo-img">
             <div class="logo-text">RESIDENCE<br><strong>BELLE VIE</strong></div>
         </a>
-  <nav>
-    <ul>
-        <li><a href="index.html">The Estate</a></li>
-        <li><a href="packages.html">Services</a></li>
-        <li><a href="rooms.html">Suites</a></li>
-        <li><a href="locations.html">Locations</a></li> 
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+        <nav>
+            <ul>
+                <li><a href="index.html">The Estate</a></li>
+                <li><a href="packages.html">Services</a></li>
+                <li><a href="rooms.html">Suites</a></li>
+                <li><a href="locations.html" class="active">Locations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <section class="hero-investment">
             <div data-aos="fade-up">
-                <span>Building a Legacy</span>
-                <h1>Investment &<br>Upper-Premium Lifestyle</h1>
+                <p style="color: var(--gold); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px;">Ultimate Luxury Senior Resort</p>
+                <h1>Where Life Blossoms<br>At Every Age</h1>
             </div>
         </section>
 
-        <section class="investment-overview">
-            <div class="overview-text" data-aos="fade-right">
-                <h2>RÉSIDENCE BELLE VIE</h2>
-                <p>Designed for 70 exclusive residents, our facility blends high-end hospitality with world-class medical infrastructure across 15,500 square meters of pure architectural splendor.</p>
+        <section class="comparison-container">
+            <div data-aos="fade-up">
+                <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 10px;">The Belle Vie Advantage</h2>
+                <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">Redefining Excellence in Senior Living</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>CRITERIA</th>
+                            <th>COMPETITORS</th>
+                            <th>BELLE VIE RESIDENCE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-crit">Concept</td>
+                            <td class="col-comp">Luxury senior living / care</td>
+                            <td class="col-us"><strong>Ultra-Luxury Senior Resort Experience</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Positioning</td>
+                            <td class="col-comp">Care + Comfort</td>
+                            <td class="col-us">Lifestyle + Prestige + 6★ Experience</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Suites</td>
+                            <td class="col-comp">Premium (25–45 sqm)</td>
+                            <td class="col-us">Boutique Hotel Design Suites (35–85 sqm)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Technology</td>
+                            <td class="col-comp">Emergency call buttons</td>
+                            <td class="col-us">Smart rooms, Telehealth, Digital monitoring & Family App</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Spa & Wellness</td>
+                            <td class="col-comp">Basic pool & fitness</td>
+                            <td class="col-us">Full Spa, Hammam, Hydrotherapy, Reflexology & Personal trainer</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Medical</td>
+                            <td class="col-comp">Standard assistance</td>
+                            <td class="col-us">Medical Director, Monthly evaluations, Family reports & 24/7 Private Assistant</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Activities</td>
+                            <td class="col-comp">Social & hobby</td>
+                            <td class="col-us">VR travel, Chef’s table, Wine tasting, Guest Speakers & Stand-up hall</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Sport</td>
+                            <td class="col-comp">Light gymnastics</td>
+                            <td class="col-us">Golf Simulator, Tennis courts, Pilates & yoga, Buggy tours</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Gastronomy</td>
+                            <td class="col-comp">Standard healthy menu</td>
+                            <td class="col-us">Fine dining, Nutritionist, Personalized menus & Gourmet nights</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Pet Friendly</td>
+                            <td class="col-comp">Rarely</td>
+                            <td class="col-us">✔ Grooming & Pet therapy programs</td>
+                        </tr>
+                        <tr>
+                            <td class="col-crit">Exclusivity</td>
+                            <td class="col-comp">Premium residence</td>
+                            <td class="col-us">Boutique resort (Max 70 residents), Ultra-personalized experience</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="stats-grid" data-aos="fade-left">
-                <div class="stat-item"><h4>70</h4><p>Resident Capacity</p></div>
-                <div class="stat-item"><h4>15.500</h4><p>SQM Built Area</p></div>
-                <div class="stat-item"><h4>1:1</h4><p>Staff Ratio</p></div>
-                <div class="stat-item"><h4>5.500</h4><p>Garden Area</p></div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-content" data-aos="fade-right">
+                <h2>The Estate Structure</h2>
+                <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 30px;">An architectural masterpiece spanning over 15,000 square meters, designed to host a limited community of 70 residents, ensuring absolute privacy and bespoke attention.</p>
+                <div class="stats-grid">
+                    <div class="stat-card"><h4>70</h4><p>Max Residents</p></div>
+                    <div class="stat-card"><h4>15,500</h4><p>SQM Built Area</p></div>
+                    <div class="stat-card"><h4>5,500</h4><p>SQM Gardens</p></div>
+                    <div class="stat-card"><h4>90+</h4><p>Restaurant Capacity</p></div>
+                </div>
+            </div>
+            <div style="background: url('estate-view.jpg') center/cover; min-height: 400px; border: 1px solid #222;" data-aos="fade-left"></div>
+        </section>
+
+        <section class="services-detail">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center;">World-Class Facilities</h2>
+            <div class="services-grid">
+                <div class="service-group" data-aos="fade-up">
+                    <h3>🍽️ Dining & Culinary</h3>
+                    <ul>
+                        <li>3 Gourmet meals daily</li>
+                        <li>Multiple live cooking stations</li>
+                        <li>Fine dining + Casual bistro + Terrace bar</li>
+                        <li>Wine pairing sessions & Sommelier events</li>
+                        <li>Chef’s table dinners with special guests</li>
+                        <li>24/7 Room Service</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🧖 Spa & Wellness</h3>
+                    <ul>
+                        <li>Full Spa (Sauna, Hammam, Jacuzzi)</li>
+                        <li>Hydrotherapy & therapeutic baths</li>
+                        <li>Hair salon & beauty studio</li>
+                        <li>Daily massage therapies</li>
+                        <li>Reflexology & Aromatherapy</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🧠 Medical Excellence</h3>
+                    <ul>
+                        <li>On-site clinic with specialists</li>
+                        <li>Telehealth & online consultations</li>
+                        <li>Smart vital monitoring & medical alerts</li>
+                        <li>Alzheimer & memory care programs</li>
+                        <li>Personalized health & longevity plans</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up">
+                    <h3>🎭 Culture & Tech</h3>
+                    <ul>
+                        <li>Private 4K Cinema & VR Experiences</li>
+                        <li>Daily live entertainment & Stand-up</li>
+                        <li>Art Studio, Gallery & Library</li>
+                        <li>Virtual travel experiences</li>
+                        <li>Smart Room automation (Voice/App)</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🌿 Lifestyle & Sport</h3>
+                    <ul>
+                        <li>Golf & Tennis courts + Buggy fleet</li>
+                        <li>Heated indoor pool & Fitness center</li>
+                        <li>Pilates, Yoga & Tai Chi classes</li>
+                        <li>Meditation & Reflection gardens</li>
+                        <li>Night Sky Observatory & Rooftop lounge</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🚗 VIP & Concierge</h3>
+                    <ul>
+                        <li>Limousine & SUV Chauffeur service</li>
+                        <li>Full-service VIP Concierge 24/7</li>
+                        <li>Pet grooming & Pet therapy sessions</li>
+                        <li>Shuttle service for events & excursions</li>
+                        <li>Bespoke travel planning for family</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section class="packages-section">
-            <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 10px;" data-aos="fade-up">Monthly Packages</h2>
-            <p style="color: var(--gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem;" data-aos="fade-up">Select your level of care</p>
-            
+            <h2 style="font-family: 'Playfair Display'; font-size: 3rem;">Monthly Collections</h2>
             <div class="packages-grid">
-                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Classic</h3>
-                    <div class="price">€1,800 <span>/ mo</span></div>
+                <div class="package-card" data-aos="fade-up">
+                    <h3>Belle Vie Classic+</h3>
+                    <div class="price">€2,500 <span>/ month</span></div>
                     <ul class="feature-list">
-                        <li>Suite Elegance (35-40 sqm)</li>
-                        <li>3 Gourmet Meals & Snacks</li>
-                        <li>Basic Medical Monitoring</li>
-                        <li>Social Club & Cinema Access</li>
-                        <li>Daily Housekeeping</li>
+                        <li>All standard residency services</li>
+                        <li>Daily fitness & yoga classes</li>
+                        <li>Full daily spa & sauna access</li>
+                        <li>Weekly VR travel experiences</li>
+                        <li>24/7 Concierge support</li>
                     </ul>
-                    <a href="contact.html" class="btn-action">Inquire Now</a>
+                    <a href="contact.html" class="btn-action">Enquire</a>
                 </div>
-
-                <div class="package-card featured" data-aos="fade-up" data-aos-delay="200">
-                    <div style="color: var(--gold); font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;">Most Requested</div>
-                    <h3>Prestige</h3>
-                    <div class="price">€2,300 <span>/ mo</span></div>
+                <div class="package-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Belle Vie Prestige+</h3>
+                    <div class="price">€3,200 <span>/ month</span></div>
                     <ul class="feature-list">
-                        <li>Prestige Suite (55-65 sqm)</li>
-                        <li>Full Monthly Medical Evaluation</li>
-                        <li>Unlimited Spa & Sauna</li>
-                        <li>4 Physiotherapy Sessions</li>
-                        <li>Personal Concierge</li>
+                        <li>All Classic+ benefits included</li>
+                        <li>Weekly Personal Trainer sessions</li>
+                        <li>Monthly Sommelier wine nights</li>
+                        <li>Beauty & reflexology sessions</li>
+                        <li>Full Pet-care services</li>
                     </ul>
                     <a href="contact.html" class="btn-action">Select Prestige</a>
                 </div>
-
-                <div class="package-card" data-aos="fade-up" data-aos-delay="300">
-                    <h3>Royale</h3>
-                    <div class="price">€3,200 <span>/ mo</span></div>
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Belle Vie Royale+</h3>
+                    <div class="price">€4,500 <span>/ month</span></div>
                     <ul class="feature-list">
-                        <li>Grand Royale Suite (70-85 sqm)</li>
-                        <li>Dedicated Daytime Assistant</li>
-                        <li>Private Clinic Transport</li>
-                        <li>8 Physiotherapy Sessions</li>
-                        <li>Private Family Lounge</li>
+                        <li>All Prestige+ benefits included</li>
+                        <li>Dedicated medical care team</li>
+                        <li>Private Chauffeur at disposal</li>
+                        <li>Exclusive rooftop VIP events</li>
+                        <li>Advanced Memory Care program</li>
                     </ul>
-                    <a href="contact.html" class="btn-action">Inquire Now</a>
+                    <a href="contact.html" class="btn-action">Enquire</a>
                 </div>
             </div>
+
+            <div class="elite-box" data-aos="zoom-in">
+                <h3 style="font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--gold);">Belle Vie Elite</h3>
+                <p style="letter-spacing: 2px; margin: 15px 0;">Custom Tier • From €6,000 / month</p>
+                <p style="color: var(--text-gray); max-width: 700px; margin: 0 auto 30px;">The pinnacle of VIP living. Includes a private chef, bespoke luxury interior upgrades, personalized health mapping, and 24/7 global travel planning.</p>
+                <a href="contact.html" class="btn-action" style="max-width: 300px; margin: 0 auto; background: var(--gold); color: black;">Request Private Portfolio</a>
+            </div>
+        </section>
+
+        <section class="extra-table-container">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2rem;">À La Carte Enhancements</h2>
+            <table class="extra-table">
+                <thead>
+                    <tr>
+                        <th>Curated Service</th>
+                        <th style="text-align: right;">Monthly Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Private 24/7 Medical Assistant</td><td class="price-tag">+ €1,500</td></tr>
+                    <tr><td>Intensive Memory Care & Support</td><td class="price-tag">+ €900</td></tr>
+                    <tr><td>Private Chef & Personalized Menu</td><td class="price-tag">+ €2,000</td></tr>
+                    <tr><td>VIP Travel & Flight Management</td><td class="price-tag">+ €700</td></tr>
+                    <tr><td>Neuro-Wellness & Brain Training</td><td class="price-tag">+ €600</td></tr>
+                    <tr><td>Personal Technology & AI Tutor</td><td class="price-tag">+ €500</td></tr>
+                    <tr><td>Full Pet-Care Subscription</td><td class="price-tag">+ €400</td></tr>
+                </tbody>
+            </table>
         </section>
     </main>
 
@@ -252,11 +458,6 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1200,
-            once: true
-        });
-    </script>
+    <script>AOS.init({ duration: 1200, once: true });</script>
 </body>
-</html> 
+</html>
