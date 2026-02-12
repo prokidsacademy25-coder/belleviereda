@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment & Lifestyle | Belle Vie Residence</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --white: #ffffff;
+            --soft-white: #f8f8f8;
+            --deep-black: #050505;
+            --charcoal: #111111;
+            --soft-black: #121212;
+            --text-gray: #a0a0a0;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--deep-black);
+            color: var(--soft-white);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            padding: 25px 6%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 50px; width: auto; }
+        .logo-text {
+            font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px;
+            color: var(--white); border-left: 1px solid var(--gold);
+            padding-left: 15px; line-height: 1.1; text-transform: uppercase;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 35px; }
+        nav ul li a {
+            text-decoration: none; color: var(--white); font-size: 0.75rem;
+            letter-spacing: 2px; text-transform: uppercase; transition: 0.4s;
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--gold); }
+
+        /* --- HERO --- */
+        .hero-investment {
+            height: 70vh;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4), rgba(5,5,5,1)), url('residcene.png');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; padding: 0 10%;
+        }
+        .hero-investment h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5rem); max-width: 900px; line-height: 1.1; }
+
+        /* --- INFRASTRUCTURE STATS --- */
+        .stats-section {
+            padding: 100px 10%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+            background: var(--deep-black);
+        }
+        .stats-content h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 30px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .stat-card { border-left: 1px solid var(--gold); padding-left: 20px; }
+        .stat-card h4 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); }
+        .stat-card p { text-transform: uppercase; font-size: 0.7rem; color: var(--text-gray); letter-spacing: 2px; }
+
+        /* --- EXTENDED SERVICES --- */
+        .services-detail { padding: 80px 10%; background: #080808; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; margin-top: 50px;
+        }
+        .service-group h3 { 
+            font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.6rem; 
+            margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 10px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .service-group ul { list-style: none; }
+        .service-group li { 
+            margin-bottom: 10px; color: var(--text-gray); font-size: 0.9rem; 
+            padding-left: 20px; position: relative; 
+        }
+        .service-group li::before { content: "•"; color: var(--gold); position: absolute; left: 0; }
+
+        /* --- PACKAGES --- */
+        .packages-section { padding: 100px 10%; text-align: center; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
+        
+        .package-card {
+            background: var(--soft-black); padding: 50px 35px; border: 1px solid #1a1a1a;
+            text-align: left; transition: var(--transition);
+        }
+        .package-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .package-card.featured { border: 2px solid var(--gold); background: #0c0c0c; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; }
+        .package-card .price { font-size: 2.2rem; font-family: 'Playfair Display', serif; margin-bottom: 30px; }
+        .package-card .price span { font-size: 0.8rem; color: var(--text-gray); letter-spacing: 1px; }
+        
+        .feature-list { list-style: none; margin-bottom: 40px; min-height: 220px; }
+        .feature-list li { padding: 10px 0; border-bottom: 1px solid #222; font-size: 0.85rem; color: var(--text-gray); }
+
+        .btn-action {
+            display: block; text-align: center; padding: 15px;
+            border: 1px solid var(--gold); color: var(--gold);
+            text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
+            transition: 0.4s;
+        }
+        .package-card.featured .btn-action { background: var(--gold); color: black; font-weight: bold; }
+
+        /* --- ELITE VIP --- */
+        .elite-box {
+            margin: 80px 0; padding: 80px; border: 1px solid var(--gold);
+            background: linear-gradient(45deg, #050505, #151515); text-align: center;
+        }
+
+        /* --- EXTRA SERVICES TABLE --- */
+        .extra-table-container { padding: 100px 10%; }
+        .extra-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        .extra-table th { text-align: left; color: var(--gold); padding: 20px; border-bottom: 1px solid #333; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
+        .extra-table td { padding: 20px; border-bottom: 1px solid #111; color: var(--text-gray); font-size: 0.95rem; }
+        .price-tag { color: var(--white); font-weight: bold; text-align: right; }
+
+        footer { background: #000; padding: 80px 10% 40px; border-top: 1px solid #111; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
+
+        @media (max-width: 1024px) {
+            .stats-section, .footer-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-wrapper">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <div class="logo-text">RESIDENCE<br><strong>BELLE VIE</strong></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">The Estate</a></li>
+                <li><a href="packages.html" class="active">Services</a></li>
+                <li><a href="rooms.html">Suites</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-investment">
+            <div data-aos="fade-up">
+                <p style="color: var(--gold); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px;">Ultimate Luxury Senior Resort</p>
+                <h1>Where Life Blossoms<br>At Every Age</h1>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-content" data-aos="fade-right">
+                <h2>The Estate Structure</h2>
+                <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 30px;">An architectural masterpiece spanning over 15,000 square meters, designed to host a limited community of 70 residents, ensuring absolute privacy and bespoke attention.</p>
+                <div class="stats-grid">
+                    <div class="stat-card"><h4>70</h4><p>Max Residents</p></div>
+                    <div class="stat-card"><h4>15,500</h4><p>SQM Built Area</p></div>
+                    <div class="stat-card"><h4>5,500</h4><p>SQM Gardens</p></div>
+                    <div class="stat-card"><h4>90+</h4><p>Restaurant Capacity</p></div>
+                </div>
+            </div>
+            <div style="background: url('estate-view.jpg') center/cover; min-height: 400px; border: 1px solid #222;" data-aos="fade-left"></div>
+        </section>
+
+        <section class="services-detail">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center;">World-Class Facilities</h2>
+            <div class="services-grid">
+                <div class="service-group" data-aos="fade-up">
+                    <h3>🍽️ Dining & Culinary</h3>
+                    <ul>
+                        <li>3 Gourmet meals daily</li>
+                        <li>Multiple live cooking stations</li>
+                        <li>Fine dining + Casual bistro + Terrace bar</li>
+                        <li>Wine pairing sessions & Sommelier events</li>
+                        <li>Chef’s table dinners with special guests</li>
+                        <li>24/7 Room Service</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🧖 Spa & Wellness</h3>
+                    <ul>
+                        <li>Full Spa (Sauna, Hammam, Jacuzzi)</li>
+                        <li>Hydrotherapy & therapeutic baths</li>
+                        <li>Hair salon & beauty studio</li>
+                        <li>Daily massage therapies</li>
+                        <li>Reflexology & Aromatherapy</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🧠 Medical Excellence</h3>
+                    <ul>
+                        <li>On-site clinic with specialists</li>
+                        <li>Telehealth & online consultations</li>
+                        <li>Smart vital monitoring & medical alerts</li>
+                        <li>Alzheimer & memory care programs</li>
+                        <li>Personalized health & longevity plans</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up">
+                    <h3>🎭 Culture & Tech</h3>
+                    <ul>
+                        <li>Private 4K Cinema & VR Experiences</li>
+                        <li>Daily live entertainment & Stand-up</li>
+                        <li>Art Studio, Gallery & Library</li>
+                        <li>Virtual travel experiences</li>
+                        <li>Smart Room automation (Voice/App)</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🌿 Lifestyle & Sport</h3>
+                    <ul>
+                        <li>Golf & Tennis courts + Buggy fleet</li>
+                        <li>Heated indoor pool & Fitness center</li>
+                        <li>Pilates, Yoga & Tai Chi classes</li>
+                        <li>Meditation & Reflection gardens</li>
+                        <li>Night Sky Observatory & Rooftop lounge</li>
+                    </ul>
+                </div>
+                <div class="service-group" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🚗 VIP & Concierge</h3>
+                    <ul>
+                        <li>Limousine & SUV Chauffeur service</li>
+                        <li>Full-service VIP Concierge 24/7</li>
+                        <li>Pet grooming & Pet therapy sessions</li>
+                        <li>Shuttle service for events & excursions</li>
+                        <li>Bespoke travel planning for family</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="packages-section">
+            <h2 style="font-family: 'Playfair Display'; font-size: 3rem;">Monthly Collections</h2>
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up">
+                    <h3>Belle Vie Classic+</h3>
+                    <div class="price">€2,500 <span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li>All standard residency services</li>
+                        <li>Daily fitness & yoga classes</li>
+                        <li>Full daily spa & sauna access</li>
+                        <li>Weekly VR travel experiences</li>
+                        <li>24/7 Concierge support</li>
+                    </ul>
+                    <a href="contact.html" class="btn-action">Enquire</a>
+                </div>
+                <div class="package-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Belle Vie Prestige+</h3>
+                    <div class="price">€3,200 <span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li>All Classic+ benefits included</li>
+                        <li>Weekly Personal Trainer sessions</li>
+                        <li>Monthly Sommelier wine nights</li>
+                        <li>Beauty & reflexology sessions</li>
+                        <li>Full Pet-care services</li>
+                    </ul>
+                    <a href="contact.html" class="btn-action">Select Prestige</a>
+                </div>
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Belle Vie Royale+</h3>
+                    <div class="price">€4,500 <span>/ month</span></div>
+                    <ul class="feature-list">
+                        <li>All Prestige+ benefits included</li>
+                        <li>Dedicated medical care team</li>
+                        <li>Private Chauffeur at disposal</li>
+                        <li>Exclusive rooftop VIP events</li>
+                        <li>Advanced Memory Care program</li>
+                    </ul>
+                    <a href="contact.html" class="btn-action">Enquire</a>
+                </div>
+            </div>
+
+            <div class="elite-box" data-aos="zoom-in">
+                <h3 style="font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--gold);">Belle Vie Elite</h3>
+                <p style="letter-spacing: 2px; margin: 15px 0;">Custom Tier • From €6,000 / month</p>
+                <p style="color: var(--text-gray); max-width: 700px; margin: 0 auto 30px;">The pinnacle of VIP living. Includes a private chef, bespoke luxury interior upgrades, personalized health mapping, and 24/7 global travel planning.</p>
+                <a href="contact.html" class="btn-action" style="max-width: 300px; margin: 0 auto; background: var(--gold); color: black;">Request Private Portfolio</a>
+            </div>
+        </section>
+
+        <section class="extra-table-container">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2rem;">À La Carte Enhancements</h2>
+            <table class="extra-table">
+                <thead>
+                    <tr>
+                        <th>Curated Service</th>
+                        <th style="text-align: right;">Monthly Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Private 24/7 Medical Assistant</td><td class="price-tag">+ €1,500</td></tr>
+                    <tr><td>Intensive Memory Care & Support</td><td class="price-tag">+ €900</td></tr>
+                    <tr><td>Private Chef & Personalized Menu</td><td class="price-tag">+ €2,000</td></tr>
+                    <tr><td>VIP Travel & Flight Management</td><td class="price-tag">+ €700</td></tr>
+                    <tr><td>Neuro-Wellness & Brain Training</td><td class="price-tag">+ €600</td></tr>
+                    <tr><td>Personal Technology & AI Tutor</td><td class="price-tag">+ €500</td></tr>
+                    <tr><td>Full Pet-Care Subscription</td><td class="price-tag">+ €400</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-text" style="border: none; padding-left: 0;">RESIDENCE<br><strong>BELLE VIE</strong></div>
+                <p style="color: var(--text-gray); margin-top: 20px; font-size: 0.9rem;">The global benchmark for luxury senior living and holistic medical care.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">The Estate</a></li>
+                    <li><a href="pachete.html">Care Packages</a></li>
+                    <li><a href="rooms.html">Suites</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="#">Fine Dining</a></li>
+                    <li><a href="#">Wellness & Spa</a></li>
+                    <li><a href="#">Social Events</a></li>
+                    <li><a href="#">Concierge</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter">
+                <h4>Newsletter</h4>
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.8rem;">Subscribe to our quarterly lifestyle journal.</p>
+                <input type="email" placeholder="YOUR EMAIL">
+                <button class="btn-sub">Subscribe</button>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 BELLE VIE RESIDENCE. ALL RIGHTS RESERVED. | PRIVACY POLICY
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1200, once: true });</script>
+</body>
+</html>

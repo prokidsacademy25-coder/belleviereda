@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belle Vie Residence | Luxury Senior Living</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --soft-white: #f8f8f8;
+            --deep-black: #050505;
+            --dark-gray: #111;
+            --text-gray: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--deep-black);
+            color: var(--soft-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img { height: 70px; width: auto; }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color: var(--soft-white);
+            border-left: 1px solid var(--gold);
+            padding-left: 15px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 35px; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--soft-white);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            font-weight: 400;
+        }
+        nav ul li a:hover { color: var(--gold); }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(to right, rgba(5,5,5,1) 20%, rgba(5,5,5,0.4) 60%, rgba(5,5,5,0) 100%), url('da.png'); 
+            background-size: cover;
+            background-position: center right;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+        }
+
+        .hero-text { max-width: 800px; }
+        .hero-text .slogan {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            transition: 0.5s;
+        }
+        .cta-button:hover { background: var(--gold); color: var(--deep-black); }
+
+        /* --- PHILOSOPHY SECTION --- */
+        .philosophy {
+            padding: 150px 10%;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            background: var(--deep-black);
+        }
+        .philosophy-content { flex: 1; }
+        .philosophy-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .philosophy-image {
+            flex: 1;
+            height: 500px;
+            /* Aici pui imaginea ta */
+            background: url('mosi.png') center/cover no-repeat; 
+            border: 1px solid var(--gold);
+            padding: 15px;
+            outline: 1px solid var(--gold);
+            outline-offset: 15px;
+            position: relative;
+        }
+
+        /* --- SUITES GALLERY --- */
+        .suites {
+            padding: 100px 8%;
+            background: var(--dark-gray);
+            text-align: center;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .suite-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .suite-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 0.8s;
+        }
+        .suite-card:hover img { transform: scale(1.1); }
+        .suite-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 40px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            text-align: left;
+        }
+        .suite-overlay h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.5rem; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 100px 8% 50px;
+            border-top: 1px solid #222;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        .footer-logo .logo-text { border-left: none; padding-left: 0; font-size: 1.8rem; margin-bottom: 20px; }
+        .footer-col h4 {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: var(--text-gray); text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--soft-white); padding-left: 5px; }
+
+        .newsletter input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 0;
+            color: white;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            border-top: 1px solid #111;
+            color: #444;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .suites-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .philosophy { flex-direction: column; text-align: center; }
+            .philosophy-image { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-wrapper">
+            <img src="logo.png" alt="Belle Vie Logo" class="logo-img">
+            <div class="logo-text">RESIDENCE<br><strong>BELLE VIE</strong></div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">The Estate</a></li>
+                <li><a href="packages.html">Services</a></li>
+                <li><a href="#">Care Plans</a></li>
+                <li><a href="#">Wellness</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="slogan">A Legacy of Care & Refinement</span>
+            <h1>The Art of Gracious Living.</h1>
+            <p>Experience a sanctuary designed for those who appreciate the finer things in life, combined with the highest standards of medical excellence.</p>
+            <a href="#suites" class="cta-button">View the Estate</a>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <span style="color:var(--gold); letter-spacing: 3px; text-transform: uppercase;">Our Philosophy</span>
+            <h2>Where Dignity Meets Splendor</h2>
+            <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px;">
+                At Belle Vie, we believe that the golden years should be the most vibrant. Our approach combines bespoke hospitality with proactive wellness, ensuring every resident enjoys a life of purpose and comfort.
+            </p>
+            <p style="color: var(--text-gray);">
+                From our Michelin-inspired dining to our private concierge services, every detail is curated to provide an environment of absolute tranquility.
+            </p>
+        </div>
+        <div class="philosophy-image"></div>
+    </section>
+
+    <section class="suites" id="suites">
+        <h2 class="section-title">Private Residences</h2>
+        <div class="suites-grid">
+            <div class="suite-card">
+                <img src="nano_banana_removed.png" alt="Royal Suite">
+                <div class="suite-overlay">
+                    <h3>The Royal Suite</h3>
+                    <p>Park View • 80 m² • Private Terrace</p>
+                </div>
+            </div>
+            <div class="suite-card">
+                <img src="room2.jpg" alt="Garden Studio">
+                <div class="suite-overlay">
+                    <h3>Imperial Garden Studio</h3>
+                    <p>Sun Deck • 55 m² • Marble Bath</p>
+                </div>
+            </div>
+            <div class="suite-card">
+                <img src="room3.jpg" alt="Penthouse">
+                <div class="suite-overlay">
+                    <h3>The Belvedere Penthouse</h3>
+                    <p>Panoramic View • 120 m² • Fireplace</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col footer-logo">
+                <div class="logo-text">RESIDENCE<br><strong>BELLE VIE</strong></div>
+                <p style="color: var(--text-gray); margin-top: 20px;">Setting the global benchmark for luxury senior living and holistic medical care.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">The Estate</a></li>
+                    <li><a href="#">Medical Care</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="#">Fine Dining</a></li>
+                    <li><a href="#">Wellness & Spa</a></li>
+                    <li><a href="#">Social Events</a></li>
+                    <li><a href="#">Concierge</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter">
+                <h4>Stay Informed</h4>
+                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.85rem;">Subscribe to our quarterly journal for lifestyle and wellness updates.</p>
+                <input type="email" placeholder="YOUR EMAIL ADDRESS">
+                <a href="#" class="cta-button" style="padding: 10px 25px; font-size: 0.7rem;">Subscribe</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 BELLE VIE RESIDENCE. ALL RIGHTS RESERVED. | PRIVACY POLICY | TERMS OF SERVICE
+        </div>
+    </footer>
+
+</body>
+</html>
