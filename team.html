@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Board | Belle Vie Residence</title>
+    <title>The Board & Governance | Belle Vie Monaco</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -13,7 +13,8 @@
             --gold: #d4af37;
             --white: #ffffff;
             --deep-black: #050505;
-            --glass: rgba(255, 255, 255, 0.02);
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-gray: #a0a0a0;
             --transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
@@ -25,98 +26,105 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER IDENTIC INDEX --- */
+        /* --- HEADER --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
             padding: 25px 6%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
         .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; }
+        .logo-img { height: 50px; }
         .logo-text {
             font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px;
             color: var(--white); border-left: 1px solid var(--gold);
             padding-left: 15px; line-height: 1.1; text-transform: uppercase;
         }
         nav ul { display: flex; list-style: none; gap: 35px; }
-        nav ul li a { text-decoration: none; color: var(--white); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul li a { text-decoration: none; color: var(--white); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         nav ul li a:hover, nav ul li a.active { color: var(--gold); }
 
-        /* --- HERO (Static & Elegant) --- */
+        /* --- HERO --- */
         .hero {
-            height: 50vh; width: 100%; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.2), var(--deep-black)), url('da.png');
+            height: 40vh; width: 100%; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4), var(--deep-black)), url('da.png');
             background-size: cover; background-position: center;
         }
         .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem);
+            font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-style: italic; color: var(--white); text-align: center;
         }
 
-        /* --- ORGANIGRAMA IERARHICĂ --- */
-        .org-container { padding: 80px 5%; display: flex; flex-direction: column; align-items: center; }
+        /* --- ORGANIGRAMA MASIVĂ --- */
+        .org-container { padding: 60px 2% 100px; display: flex; flex-direction: column; align-items: center; }
 
-        /* CEO / NIVEL 1 */
-        .ceo-card {
-            background: linear-gradient(145deg, #111, #050505);
-            border: 2px solid var(--gold);
-            padding: 40px 60px; text-align: center;
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
-            z-index: 10; margin-bottom: 20px;
-        }
-        .ceo-card h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 5px; }
-        .ceo-card span { color: var(--gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; }
-
-        /* Linii de legătură aurii */
-        .line-v { width: 2px; height: 60px; background: var(--gold); }
-        .line-h { width: 85%; height: 2px; background: var(--gold); position: relative; }
-
-        /* GRID DIRECTORI / NIVEL 2 */
-        .directors-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px; width: 100%; margin-top: 0;
-        }
-
-        .dir-column { display: flex; flex-direction: column; align-items: center; }
-
-        .dir-card {
+        .card {
             background: var(--glass);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 25px 15px; width: 100%; text-align: center;
-            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 25px; text-align: center;
             backdrop-filter: blur(10px);
-            margin-bottom: 25px;
+            transition: var(--transition);
+            width: 100%;
         }
-        .dir-card:hover { border-color: var(--gold); transform: translateY(-5px); background: rgba(212, 175, 55, 0.05); }
-        .dir-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 5px; }
-        .dir-card p { color: var(--gold); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); background: rgba(212, 175, 55, 0.08); }
+        .card h2, .card h3 { font-family: 'Playfair Display', serif; margin-bottom: 5px; font-size: 1.2rem; }
+        .card span, .card p { color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.65rem; font-weight: bold; }
 
-        /* LISTĂ POSTURI (Density Wow) */
-        .staff-list {
-            width: 100%; background: rgba(255,255,255,0.02);
-            padding: 15px; border-left: 1px solid var(--gold);
+        /* Ierarhie */
+        .ceo-node { width: 400px; border: 2px solid var(--gold); padding: 40px; margin-bottom: 20px; }
+        .vice-node { width: 350px; border: 1.5px solid rgba(212, 175, 55, 0.6); }
+
+        /* Grid-ul de Directori (5 coloane pentru extindere) */
+        .directors-outer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px; width: 100%; max-width: 1600px;
+            margin-top: 0;
+        }
+
+        /* Linii */
+        .line-v { width: 1px; height: 40px; background: rgba(212, 175, 55, 0.4); }
+        .line-h-wide { width: 80%; height: 1px; background: rgba(212, 175, 55, 0.4); }
+
+        /* Liste de staff detaliate */
+        .staff-box {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: left;
+        }
+        .staff-category {
+            display: block;
+            font-size: 0.6rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px 0 5px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.05);
         }
         .job-item {
-            display: block; font-size: 0.75rem; color: #bbb;
-            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-            text-transform: uppercase; letter-spacing: 1px;
+            display: block; font-size: 0.65rem; color: #888;
+            padding: 3px 0; text-transform: uppercase;
         }
-        .job-item strong { color: var(--gold); float: right; font-family: 'Playfair Display'; font-size: 0.9rem; }
+        .job-item strong { color: #ccc; float: right; font-weight: 400; }
 
-        /* --- FOOTER ORIGINAL --- */
-        footer { background: #000; padding: 100px 10% 50px; border-top: 1px solid #111; margin-top: 100px; }
+        /* --- FOOTER (CONFORM INDEX) --- */
+        footer {
+            background: #000; padding: 100px 10% 50px; border-top: 1px solid #111; margin-top: 100px;
+        }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
         .footer-col h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 0.8rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
         .footer-col a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
+        .newsletter input { width: 100%; background: transparent; border: 1px solid #222; padding: 15px; color: white; margin-bottom: 20px; }
+        .btn-sub { background: var(--gold); color: black; border: none; padding: 15px 30px; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.4s; }
+        .btn-sub:hover { background: white; }
+        .copyright { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid #111; color: #444; font-size: 0.8rem; }
 
-        @media (max-width: 1100px) {
-            .directors-grid { grid-template-columns: 1fr 1fr; }
-            .line-h { display: none; }
-        }
+        @media (max-width: 1400px) { .directors-outer-grid { grid-template-columns: repeat(3, 1fr); } .line-h-wide { display: none; } }
+        @media (max-width: 900px) { .directors-outer-grid { grid-template-columns: 1fr; } .ceo-node, .vice-node { width: 90%; } }
     </style>
 </head>
 <body>
@@ -140,91 +148,123 @@
 
     <main>
         <section class="hero">
-            <h1 data-aos="fade-up">Curated Excellence</h1>
+            <h1 data-aos="fade-up">Organizational Structure</h1>
         </section>
 
         <section class="org-container">
             
-            <div class="ceo-column" data-aos="fade-down">
-                <div class="ceo-card">
+            <div data-aos="fade-down">
+                <div class="card ceo-node">
                     <h2>Nica Andrei</h2>
                     <span>General Director</span>
                 </div>
             </div>
 
             <div class="line-v"></div>
-            <div class="line-h"></div>
 
-            <div class="directors-grid">
+            <div data-aos="fade-down" data-aos-delay="200">
+                <div class="card vice-node">
+                    <h3>Tudor Antonio</h3>
+                    <p>Vice Director</p>
+                </div>
+            </div>
+
+            <div class="line-v"></div>
+            <div class="line-h-wide"></div>
+
+            <div class="directors-outer-grid">
                 
-                <div class="dir-column" data-aos="fade-up" data-aos-delay="100">
-                    <div class="line-v"></div>
-                    <div class="dir-card">
-                        <h3>Tudor Antonio</h3>
-                        <p>Vice Director</p>
-                    </div>
-                    <div class="staff-list">
-                        <span class="job-item">Medical Coordinators <strong>03</strong></span>
-                        <span class="job-item">Registered Nurses <strong>06</strong></span>
-                        <span class="job-item">Infirmary Teams <strong>20</strong></span>
-                        <span class="job-item">Kinesiotherapists <strong>03</strong></span>
-                        <span class="job-item">Housekeeping <strong>10</strong></span>
-                    </div>
-                </div>
-
-                <div class="dir-column" data-aos="fade-up" data-aos-delay="200">
-                    <div class="line-v"></div>
-                    <div class="dir-card">
-                        <h3>Popescu Raisa</h3>
-                        <p>Marketing Director</p>
-                    </div>
-                    <div class="staff-list">
-                        <span class="job-item">Guest Experience <strong>02</strong></span>
-                        <span class="job-item">Events Manager <strong>01</strong></span>
-                        <span class="job-item">Social Media <strong>01</strong></span>
-                        <span class="job-item">PR Relations <strong>01</strong></span>
-                    </div>
-                </div>
-
                 <div class="dir-column" data-aos="fade-up" data-aos-delay="300">
-                    <div class="line-v"></div>
-                    <div class="dir-card">
-                        <h3>Stancu Cristian</h3>
-                        <p>IT Director</p>
-                    </div>
-                    <div class="staff-list">
-                        <span class="job-item">System Admin <strong>01</strong></span>
-                        <span class="job-item">Tech Security <strong>02</strong></span>
-                        <span class="job-item">Smart Infrastructure <strong>01</strong></span>
-                        <span class="job-item">Digital Solutions <strong>01</strong></span>
+                    <div class="line-v" style="margin: 0 auto;"></div>
+                    <div class="card">
+                        <h3>Dr. Elena Voinea</h3>
+                        <p>Medical Director</p>
+                        <div class="staff-box">
+                            <span class="staff-category">Clinical Team</span>
+                            <span class="job-item">Head Physicians <strong>02</strong></span>
+                            <span class="job-item">Night Supervisors <strong>04</strong></span>
+                            <span class="staff-category">Therapy</span>
+                            <span class="job-item">Kinesiotherapists <strong>06</strong></span>
+                            <span class="job-item">Psychologists <strong>02</strong></span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="dir-column" data-aos="fade-up" data-aos-delay="400">
-                    <div class="line-v"></div>
-                    <div class="dir-card">
+                    <div class="line-v" style="margin: 0 auto;"></div>
+                    <div class="card">
+                        <h3>Popescu Raisa</h3>
+                        <p>Marketing & Lifestyle Director</p>
+                        <div class="staff-box">
+                            <span class="staff-category">Guest Services</span>
+                            <span class="job-item">Executive Chef <strong>01</strong></span>
+                            <span class="job-item">Head Butler <strong>01</strong></span>
+                            <span class="staff-category">Relations</span>
+                            <span class="job-item">Events Manager <strong>02</strong></span>
+                            <span class="job-item">PR Specialist <strong>01</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dir-column" data-aos="fade-up" data-aos-delay="500">
+                    <div class="line-v" style="margin: 0 auto;"></div>
+                    <div class="card">
+                        <h3>Stancu Cristian</h3>
+                        <p>IT & Infrastructure Director</p>
+                        <div class="staff-box">
+                            <span class="staff-category">Digital Systems</span>
+                            <span class="job-item">Cyber Security <strong>02</strong></span>
+                            <span class="job-item">AI Integration <strong>01</strong></span>
+                            <span class="staff-category">Smart Home</span>
+                            <span class="job-item">IoT Technicians <strong>03</strong></span>
+                            <span class="job-item">Data Analyst <strong>01</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dir-column" data-aos="fade-up" data-aos-delay="600">
+                    <div class="line-v" style="margin: 0 auto;"></div>
+                    <div class="card">
+                        <h3>Marc Antoniu</h3>
+                        <p>Operations Director</p>
+                        <div class="staff-box">
+                            <span class="staff-category">Protection</span>
+                            <span class="job-item">Security Chief <strong>01</strong></span>
+                            <span class="job-item">Private Guards <strong>12</strong></span>
+                            <span class="staff-category">Maintenance</span>
+                            <span class="job-item">Logistics Manager <strong>01</strong></span>
+                            <span class="job-item">Housekeeping Lead <strong>01</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dir-column" data-aos="fade-up" data-aos-delay="700">
+                    <div class="line-v" style="margin: 0 auto;"></div>
+                    <div class="card">
                         <h3>Grigore Alexia</h3>
                         <p>Financial Director</p>
-                    </div>
-                    <div class="staff-list">
-                        <span class="job-item">Accounting <strong>01</strong></span>
-                        <span class="job-item">Procurement <strong>02</strong></span>
-                        <span class="job-item">Legal Compliance <strong>01</strong></span>
-                        <span class="job-item">Asset Management <strong>01</strong></span>
+                        <div class="staff-box">
+                            <span class="staff-category">Governance</span>
+                            <span class="job-item">Legal Counsel <strong>02</strong></span>
+                            <span class="job-item">Senior Accountant <strong>02</strong></span>
+                            <span class="staff-category">Supply Chain</span>
+                            <span class="job-item">Procurement <strong>03</strong></span>
+                            <span class="job-item">Asset Auditor <strong>01</strong></span>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <div style="text-align:center; margin-top:120px;" data-aos="zoom-in">
-                <h2 style="font-family:'Playfair Display'; font-size:3.5rem; color:var(--gold);">60+ Professionals</h2>
-                <p style="letter-spacing:8px; text-transform:uppercase; color:#666;">Serving a Circle of 70 Residents</p>
+            <div style="text-align:center; margin-top:100px;" data-aos="zoom-in">
+                <h2 style="font-family:'Playfair Display'; font-size:2.5rem; color:var(--gold);">A Synergy of 85+ Professionals</h2>
+                <p style="letter-spacing:5px; text-transform:uppercase; color:#555; font-size: 0.75rem;">Dedicated to the well-being of our 70 exclusive residents</p>
             </div>
 
         </section>
     </main>
 
-        <footer>
+    <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo-text" style="border: none; padding-left: 0;">RESIDENCE<br><strong>BELLE VIE</strong></div>
@@ -234,7 +274,7 @@
                 <h4>Navigation</h4>
                 <ul>
                     <li><a href="index.html">The Estate</a></li>
-                    <li><a href="pachete.html">Care Packages</a></li>
+                    <li><a href="packages.html">Care Packages</a></li>
                     <li><a href="rooms.html">Suites</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -260,11 +300,7 @@
         </div>
     </footer>
 
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ duration: 1200, once: true });</script>
 </body>
 </html>
-
-
-
