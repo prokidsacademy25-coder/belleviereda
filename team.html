@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Belle Vie Residence</title>
+    <title>The Visionaries | Belle Vie Residence</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -11,33 +11,30 @@
     <style>
         :root {
             --gold: #d4af37;
+            --gold-light: #f1d592;
             --white: #ffffff;
-            --soft-white: #f8f8f8;
             --deep-black: #050505;
-            --charcoal: #111111;
+            --charcoal: #0a0a0a;
             --text-gray: #a0a0a0;
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-ultra: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--deep-black);
-            color: var(--soft-white);
-            line-height: 1.6;
+            color: var(--white);
+            overflow-x: hidden;
         }
 
-        /* --- HEADER (Identic cu Index) --- */
+        /* --- HEADER IDENTIC CU INDEX --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
             padding: 25px 6%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 5, 5, 0.75);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 5, 0.4);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
-
         .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo-img { height: 50px; width: auto; }
         .logo-text {
@@ -45,7 +42,6 @@
             color: var(--white); border-left: 1px solid var(--gold);
             padding-left: 15px; line-height: 1.1; text-transform: uppercase;
         }
-
         nav ul { display: flex; list-style: none; gap: 35px; }
         nav ul li a {
             text-decoration: none; color: var(--white); font-size: 0.75rem;
@@ -53,99 +49,126 @@
         }
         nav ul li a:hover, nav ul li a.active { color: var(--gold); }
 
-        /* --- HERO SECTION (Folosește da.png) --- */
+        /* --- WOW HERO SECTION --- */
         .hero {
-            position: relative; height: 60vh; width: 100%;
-            overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center;
+            position: relative; height: 100vh; width: 100%;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
         }
 
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.7) 0%, rgba(5,5,5,1) 100%), url('da.png'); 
+            background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,1) 100%), url('da.png'); 
             background-size: cover; background-position: center;
-            z-index: -1;
+            z-index: -1; transform: scale(1.1);
+            animation: slowZoom 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem);
-            line-height: 1.1; margin-bottom: 20px;
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .hero-title-wrap { text-align: center; z-index: 10; }
+        .hero-title-wrap span {
+            display: block; color: var(--gold); letter-spacing: 12px;
+            text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px;
+            opacity: 0; animation: fadeInDown 1.5s forwards 0.5s;
+        }
+        .hero-title-wrap h1 {
+            font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7.5rem);
+            line-height: 1; font-weight: 400; font-style: italic;
+            opacity: 0; animation: fadeInUp 1.5s forwards 0.8s;
         }
 
-        /* --- FOUNDERS / BOARD SECTION --- */
-        .board-section { padding: 100px 6%; text-align: center; }
-        .section-tag { color: var(--gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 40px; display: block; }
+        /* --- FOUNDERS "GILDED GLASS" GRID --- */
+        .board-container { padding: 100px 6%; position: relative; margin-top: -10vh; z-index: 20; }
         
         .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin-bottom: 100px;
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
         }
 
         .founder-card {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            padding: 40px 15px;
-            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 60px 20px;
+            text-align: center;
+            transition: var(--transition-ultra);
+            position: relative;
         }
 
         .founder-card:hover {
+            background: rgba(212, 175, 55, 0.05);
             border-color: var(--gold);
-            transform: translateY(-10px);
-            background: #111;
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
-        .founder-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
-        .founder-card p { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        .founder-card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0; transition: 0.8s;
+        }
+        .founder-card:hover::after { opacity: 1; }
 
-        /* --- ORGANIGRAMA DEPARTAMENTE --- */
-        .dept-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            padding: 0 10% 100px;
+        .founder-card h3 {
+            font-family: 'Playfair Display', serif; font-size: 1.6rem;
+            margin-bottom: 15px; letter-spacing: 1px;
+        }
+        .founder-card p {
+            color: var(--gold); font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 3px; font-weight: 700;
         }
 
-        .dept-box {
-            background: #080808;
-            border: 1px solid #111;
-            padding: 40px;
+        /* --- DEPARTMENTS "THE PILLARS" --- */
+        .pillars-section { padding: 150px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; background: #080808; }
+        
+        .pillar-header { margin-bottom: 60px; }
+        .pillar-header h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--white); }
+        .pillar-header div { width: 50px; height: 2px; background: var(--gold); margin-top: 20px; }
+
+        .staff-item {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: 0.5s;
+        }
+        .staff-item:hover { padding-left: 15px; border-bottom-color: var(--gold); }
+        
+        .staff-label h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .staff-label p { color: var(--text-gray); font-size: 0.8rem; }
+        
+        .staff-number {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem;
+            color: var(--gold); line-height: 1;
         }
 
-        .dept-title {
-            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold);
-            margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 15px;
+        /* --- WOW FOOTER REDESIGN --- */
+        .grand-stats {
+            padding: 150px 10%; text-align: center;
+            background: linear-gradient(to top, #000, #080808);
         }
-
-        .staff-row {
-            display: flex; justify-content: space-between;
-            padding: 12px 0; border-bottom: 1px solid #111;
-            font-size: 0.9rem; color: var(--text-gray);
+        .grand-stats h2 {
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem);
+            color: transparent; -webkit-text-stroke: 1px var(--gold); margin-bottom: 20px;
         }
+        .grand-stats p { letter-spacing: 8px; text-transform: uppercase; font-size: 0.9rem; color: var(--gold); }
 
-        .staff-count { color: var(--white); font-weight: bold; font-family: 'Playfair Display'; font-size: 1.2rem; }
-
-        /* --- FOOTER (Identic cu Index) --- */
         footer { background: #000; padding: 100px 10% 50px; border-top: 1px solid #111; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
         .footer-col h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 0.8rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 15px; }
         .footer-col a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
+        .copyright { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #111; color: #444; font-size: 0.75rem; }
 
-        .newsletter input {
-            width: 100%; padding: 15px; background: transparent; border: 1px solid #222;
-            color: white; margin-bottom: 15px;
-        }
-        .btn-sub { width: 100%; padding: 15px; background: var(--gold); color: black; border: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-weight: bold; }
+        /* ANIMATIONS */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
 
-        .copyright { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #111; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .founders-grid { grid-template-columns: repeat(3, 1fr); }
-            .dept-container { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .pillars-section { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .founders-grid { grid-template-columns: 1fr; }
+            header { padding: 20px; }
             nav { display: none; }
         }
     </style>
@@ -172,61 +195,90 @@
     <main>
         <section class="hero">
             <div class="hero-bg"></div>
-            <div class="hero-content" data-aos="fade-up">
-                <span class="section-tag">Governance & Excellence</span>
-                <h1>The Visionaries</h1>
+            <div class="hero-title-wrap">
+                <span data-aos="fade-down">An Elite Synergy</span>
+                <h1 data-aos="fade-up">Curated Excellence</h1>
             </div>
         </section>
 
-        <section class="board-section">
-            <span class="section-tag" data-aos="fade-up">Board of Directors</span>
+        <div class="board-container">
             <div class="founders-grid">
-                <div class="founder-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>Nica Andrei</h3>
                     <p>General Director</p>
                 </div>
-                <div class="founder-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="200">
                     <h3>Popescu Raisa</h3>
                     <p>Marketing Director</p>
                 </div>
-                <div class="founder-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="300">
                     <h3>Tudor Antonio</h3>
                     <p>Vice Director</p>
                 </div>
-                <div class="founder-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="400">
                     <h3>Stancu Cristian</h3>
                     <p>IT Director</p>
                 </div>
-                <div class="founder-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="founder-card" data-aos="fade-up" data-aos-delay="500">
                     <h3>Grigore Alexia</h3>
                     <p>Financial Director</p>
                 </div>
             </div>
+        </div>
 
-            <div class="dept-container">
-                <div class="dept-box" data-aos="fade-right">
-                    <h2 class="dept-title">Medical & Care</h2>
-                    <div class="staff-row"><span>Medical Coordinators</span><span class="staff-count">3</span></div>
-                    <div class="staff-row"><span>Registered Nurses</span><span class="staff-count">6</span></div>
-                    <div class="staff-row"><span>Nursing Assistants (Infirmieri)</span><span class="staff-count">20</span></div>
-                    <div class="staff-row"><span>Kinesiotherapists</span><span class="staff-count">3</span></div>
-                    <div class="staff-row"><span>Psychologists</span><span class="staff-count">2</span></div>
+        <section class="pillars-section">
+            <div data-aos="fade-right">
+                <div class="pillar-header">
+                    <h2>Medical<br>Custodians</h2>
+                    <div></div>
                 </div>
-
-                <div class="dept-box" data-aos="fade-left">
-                    <h2 class="dept-title">Hospitality & Ops</h2>
-                    <div class="staff-row"><span>General Management</span><span class="staff-count">2</span></div>
-                    <div class="staff-row"><span>Culinary Team</span><span class="staff-count">8</span></div>
-                    <div class="staff-row"><span>Housekeeping & Concierge</span><span class="staff-count">10</span></div>
-                    <div class="staff-row"><span>Maintenance & Security</span><span class="staff-count">6</span></div>
-                    <div class="staff-row"><span>Marketing & Admin</span><span class="staff-count">1</span></div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Physicians</h4><p>Coordinating elite medical experts.</p></div>
+                    <div class="staff-number">03</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Nurse Specialists</h4><p>Certified clinical assistance.</p></div>
+                    <div class="staff-number">06</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Care Staff</h4><p>Compassionate 24/7 attendance.</p></div>
+                    <div class="staff-number">20</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Therapists</h4><p>Rehabilitation and mental health.</p></div>
+                    <div class="staff-number">05</div>
                 </div>
             </div>
 
-            <div style="padding: 50px 0;" data-aos="fade-up">
-                <h2 style="font-family: 'Playfair Display'; color: var(--gold); font-size: 2.5rem;">~60 Professionals</h2>
-                <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Dedicated to 70 Residents</p>
+            <div data-aos="fade-left">
+                <div class="pillar-header">
+                    <h2>Lifestyle<br>Artisans</h2>
+                    <div></div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-row">
+                        <div class="staff-label"><h4>Culinary Masters</h4><p>Gastronomy and nutrition.</p></div>
+                    </div>
+                    <div class="staff-number">08</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Estate Management</h4><p>Concierge and housekeeping elite.</p></div>
+                    <div class="staff-number">10</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Security & Support</h4><p>Safety and technical excellence.</p></div>
+                    <div class="staff-number">06</div>
+                </div>
+                <div class="staff-item">
+                    <div class="staff-label"><h4>Executive Admin</h4><p>Marketing and operations.</p></div>
+                    <div class="staff-number">03</div>
+                </div>
             </div>
+        </section>
+
+        <section class="grand-stats" data-aos="zoom-in">
+            <h2>60+ Staff Members</h2>
+            <p>For a Limited Circle of 70 Residents</p>
         </section>
     </main>
 
@@ -254,20 +306,18 @@
                     <li><a href="#">Concierge</a></li>
                 </ul>
             </div>
-            <div class="footer-col newsletter">
+            <div class="footer-col">
                 <h4>Newsletter</h4>
-                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.8rem;">Subscribe to our quarterly lifestyle journal.</p>
-                <input type="email" placeholder="YOUR EMAIL">
+                <p style="color: var(--text-gray); font-size: 0.8rem; margin-bottom: 20px;">Join our exclusive circle.</p>
                 <button class="btn-sub">Subscribe</button>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 BELLE VIE RESIDENCE. ALL RIGHTS RESERVED. | PRIVACY POLICY
+            &copy; 2026 BELLE VIE RESIDENCE. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1200, once: true });</script>
+    <script>AOS.init({ duration: 1500, once: true });</script>
 </body>
-
 </html>
