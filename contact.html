@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Private Tours | Belle Vie Residence</title>
+    <title>Private Concierge | Belle Vie Monaco</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -12,339 +12,243 @@
         :root {
             --gold: #d4af37;
             --white: #ffffff;
-            --soft-white: #f8f8f8;
             --deep-black: #050505;
-            --charcoal: #111111;
             --soft-black: #0c0c0c;
             --text-gray: #a0a0a0;
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--deep-black);
-            color: var(--soft-white);
-            line-height: 1.6;
+            color: var(--white);
+            overflow-x: hidden;
         }
 
-        /* --- HEADER (MODERN GLASS) --- */
+        /* --- NAVIGATION --- */
         header {
             position: fixed; width: 100%; top: 0; z-index: 1000;
             padding: 25px 6%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 5, 5, 0.75);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
-
         .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; }
+        .logo-img { height: 50px; }
         .logo-text {
             font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px;
-            color: var(--white); border-left: 1px solid var(--gold);
-            padding-left: 15px; line-height: 1.1; text-transform: uppercase;
+            color: var(--white); border-left: 1px solid var(--gold); padding-left: 15px; text-transform: uppercase;
         }
-
         nav ul { display: flex; list-style: none; gap: 35px; }
-        nav ul li a {
-            text-decoration: none; color: var(--white); font-size: 0.75rem;
-            letter-spacing: 2px; text-transform: uppercase; transition: 0.4s;
-        }
+        nav ul li a { text-decoration: none; color: var(--white); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
         nav ul li a:hover, nav ul li a.active { color: var(--gold); }
 
-        /* --- HERO CONTACT --- */
-        .hero-contact {
-            height: 60vh;
-            background: linear-gradient(to bottom, rgba(5,5,5,0.3), rgba(5,5,5,1)), url('da.png');
+        /* --- HERO MONACO --- */
+        .contact-hero {
+            height: 60vh; background: linear-gradient(to bottom, rgba(5,5,5,0.2), var(--deep-black)), url('da.png');
             background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
         }
-        .hero-contact span { color: var(--gold); text-transform: uppercase; letter-spacing: 6px; font-size: 0.9rem; margin-bottom: 20px; }
-        .hero-contact h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5rem); line-height: 1.1; }
+        .contact-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 8vw, 6rem); font-style: italic; }
+        .contact-hero p { color: var(--gold); letter-spacing: 8px; text-transform: uppercase; font-size: 0.9rem; margin-top: 20px; }
 
-        /* --- CONTACT CONTENT --- */
-        .contact-grid {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 100px;
-            background: var(--deep-black);
-        }
+        /* --- CONFIGURATOR PACHETE --- */
+        .config-container { padding: 100px 8%; background: var(--deep-black); }
+        .config-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 60px; }
 
-        .contact-info h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 40px;
-            line-height: 1.2;
+        .package-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 80px;
         }
+        .pkg-item {
+            background: #0c0c0c; border: 1px solid #1a1a1a; padding: 40px 20px; text-align: center;
+            cursor: pointer; transition: var(--transition); position: relative;
+        }
+        .pkg-item:hover, .pkg-item.active {
+            border-color: var(--gold); background: rgba(212, 175, 55, 0.05); transform: translateY(-10px);
+        }
+        .pkg-item h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
+        .pkg-item .price { color: var(--gold); font-size: 1.2rem; font-weight: 700; display: block; margin-top: 10px; }
+        .pkg-item small { color: var(--text-gray); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .info-card {
-            margin-bottom: 50px;
-            border-left: 1px solid var(--gold);
-            padding-left: 30px;
+        /* --- FORMULAR SI LOCATIE --- */
+        .main-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; padding: 0 8% 100px;
         }
-        .info-card h4 {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-        }
-        .info-card p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            font-weight: 300;
-        }
+        
+        .monaco-info h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 30px; }
+        .info-box { margin-bottom: 40px; }
+        .info-box h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 15px; }
+        .info-box p { font-size: 1rem; color: var(--text-gray); line-height: 1.7; }
 
-        /* --- MODERN FORM --- */
-        .contact-form-wrapper {
-            background: var(--soft-black);
-            padding: 60px;
-            border: 1px solid #1a1a1a;
-            position: relative;
+        .form-wrap { background: #080808; padding: 50px; border: 1px solid #111; }
+        .input-wrap { margin-bottom: 35px; }
+        .input-wrap label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); margin-bottom: 15px; }
+        .input-wrap input, .input-wrap textarea {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid #222;
+            color: white; padding: 12px 0; font-size: 1.1rem; transition: 0.4s; font-family: 'Playfair Display', serif;
         }
-        .contact-form-wrapper::before {
-            content: ""; position: absolute; top: -1px; left: -1px; width: 50px; height: 50px;
-            border-top: 2px solid var(--gold); border-left: 2px solid var(--gold);
-        }
+        .input-wrap input:focus { outline: none; border-bottom-color: var(--gold); }
 
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
-        .form-group { margin-bottom: 30px; }
-        .form-group label {
-            display: block; color: var(--gold); text-transform: uppercase;
-            font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 12px;
+        .btn-request {
+            width: 100%; background: var(--gold); color: black; border: none; padding: 22px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 5px; cursor: pointer;
+            transition: var(--transition);
         }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid #333;
-            padding: 15px 0; color: white; font-family: inherit; font-size: 1rem;
-            outline: none; transition: 0.4s;
-        }
-        .form-group input:focus, .form-group textarea:focus { border-bottom-color: var(--gold); }
+        .btn-request:hover { background: white; letter-spacing: 7px; }
 
-        .btn-submit {
-            width: 100%; padding: 22px; background: transparent; border: 1px solid var(--gold);
-            color: var(--gold); text-transform: uppercase; letter-spacing: 4px;
-            cursor: pointer; transition: var(--transition); font-size: 0.8rem;
-        }
-        .btn-submit:hover { background: var(--gold); color: black; transform: translateY(-5px); }
-
-        /* --- MAP SECTION --- */
-        .map-section { height: 500px; width: 100%; filter: grayscale(1) invert(1) contrast(0.8); opacity: 0.6; }
-
-        /* --- FOOTER (ALL DETAILS) --- */
-        footer { background: #000; padding: 100px 10% 50px; border-top: 1px solid #111; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
-        .footer-col h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 0.8rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 15px; }
+        /* --- FOOTER --- */
+        footer { background: #000; padding: 80px 10% 40px; border-top: 1px solid #111; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
+        .footer-col h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; font-size: 0.8rem; }
         .footer-col a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold); padding-left: 5px; }
 
-        .newsletter input {
-            width: 100%; padding: 15px; background: transparent; border: 1px solid #222;
-            color: white; margin-bottom: 15px;
-        }
-        .btn-sub { width: 100%; padding: 15px; background: var(--gold); color: black; border: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-weight: bold; }
-
-        .copyright { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #111; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
-
-        @media (max-width: 1024px) {
-            .contact-grid { grid-template-columns: 1fr; gap: 60px; }
-            .form-row { grid-template-columns: 1fr; }
-            nav { display: none; }
-        }
-
-        /* --- SECCIÓN DE MAPA REDISEÑADA --- */
-        .map-container {
-            padding: 100px 10%;
-            background: var(--deep-black);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .map-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .map-header span {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 0.8rem;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .map-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--white);
-        }
-
-        .map-wrapper-premium {
-            width: 100%;
-            height: 550px;
-            position: relative;
-            background: var(--soft-black);
-            padding: 15px; /* Espacio para el marco dorado */
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            transition: var(--transition);
-        }
-
-        /* El marco decorativo interior */
-        .map-wrapper-premium::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            pointer-events: none;
-        }
-
-        .map-iframe-premium {
-            width: 100%;
-            height: 100%;
-            border: none;
-            /* Filtro de lujo: escala de grises e inversión suave para fundirse con el negro */
-            filter: grayscale(1) invert(0.92) contrast(1.2) brightness(0.9);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Al pasar el mouse, el mapa recupera algo de color y se eleva */
-        .map-wrapper-premium:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-        }
-
-        .map-wrapper-premium:hover .map-iframe-premium {
-            filter: grayscale(0.3) invert(0) contrast(1) brightness(1);
+        @media (max-width: 1100px) {
+            .main-grid, .package-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>    
+    <header>
         <a href="index.html" class="logo-wrapper">
             <img src="logo.png" alt="Logo" class="logo-img">
             <div class="logo-text">RESIDENCE<br><strong>BELLE VIE</strong></div>
         </a>
-  <nav>
-    <ul>
+        <nav>
+            <ul>
                 <li><a href="index.html">The Estate</a></li>
                 <li><a href="packages.html">Services</a></li>
                 <li><a href="rooms.html">Suites</a></li>
                 <li><a href="team.html">Team</a></li>
-                <li><a href="locations.html">Locations</a></li> 
-                <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section class="hero-contact">
-            <div data-aos="fade-up">
-                <span>Private Consultations</span>
-                <h1>Connect with Excellence</h1>
-            </div>
+        <section class="contact-hero">
+            <h1 data-aos="fade-up">Monte Carlo Residency</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Exclusivity at its finest</p>
         </section>
 
-        <section class="contact-grid">
-            <div class="contact-info" data-aos="fade-right">
-                <h2>A Sanctuary of Peace Awaits.</h2>
-                <p style="color: var(--text-gray); margin-bottom: 60px; font-size: 1.1rem;">Schedule a private tour of the estate. Our concierge team is available to discuss personalized care plans for your family.</p>
-                
-                <div class="info-card">
-                    <h4>The Estate</h4>
-                    <p>122 Luxury Lane, Beverly Hills<br>California, US</p>
+        <section class="config-container">
+            <h2 class="config-title" data-aos="fade-up">Select Your Tier</h2>
+            
+            <div class="package-grid">
+                <div class="pkg-item" data-aos="fade-up" data-aos-delay="100" onclick="updateForm('Classic+', '€2,500')">
+                    <h3>Classic+</h3>
+                    <small>Standard Excellence</small>
+                    <span class="price">€2,500</span>
                 </div>
 
-                <div class="info-card">
-                    <h4>Direct Line</h4>
-                    <p>+1 (800) BELLE-VIE<br>excellence@bellevie.com</p>
+                <div class="pkg-item active" data-aos="fade-up" data-aos-delay="200" onclick="updateForm('Prestige+', '€3,200')">
+                    <h3>Prestige+</h3>
+                    <small>Elite Living</small>
+                    <span class="price">€3,200</span>
                 </div>
 
-                <div class="info-card">
-                    <h4>Visiting Hours</h4>
-                    <p>Monday - Sunday<br>09:00 AM - 08:00 PM</p>
+                <div class="pkg-item" data-aos="fade-up" data-aos-delay="300" onclick="updateForm('Royale+', '€4,500')">
+                    <h3>Royale+</h3>
+                    <small>Royal Treatment</small>
+                    <span class="price">€4,500</span>
+                </div>
+
+                <div class="pkg-item" data-aos="fade-up" data-aos-delay="400" onclick="updateForm('Elite', 'From €6,000')">
+                    <h3>Elite</h3>
+                    <small>Bespoke Custom</small>
+                    <span class="price">From €6,000</span>
                 </div>
             </div>
 
-            <div class="contact-form-wrapper" data-aos="fade-left">
-                <form action="#">
-                    <div class="form-row">
-                        <div class="form-group">
+            <div class="main-grid">
+                <div class="monaco-info" data-aos="fade-right">
+                    <h2>The Concierge</h2>
+                    <div class="info-box">
+                        <h4>Address</h4>
+                        <p>Place du Casino, 98000<br>Monte Carlo, Monaco</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Direct Liaison</h4>
+                        <p>+377 98 06 20 00<br>concierge@bellevie.mc</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Privileged Access</h4>
+                        <p>We provide private airport transfer from Nice (NCE) via helicopter or limousine for all Royal and Elite applicants.</p>
+                    </div>
+                </div>
+
+                <div class="form-wrap" data-aos="fade-left">
+                    <form id="bookingForm">
+                        <div class="input-wrap">
+                            <label>Selection Confirmation</label>
+                            <input type="text" id="selectedPkgDisplay" value="Prestige+ — €3,200/mo" readonly style="color: var(--gold);">
+                        </div>
+                        <div class="input-wrap">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Johnathan Doe">
+                            <input type="text" placeholder="Enter your full name" required>
                         </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" placeholder="john@example.com">
+                        <div class="input-wrap">
+                            <label>Private Email</label>
+                            <input type="email" placeholder="email@confidential.com" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Preferred Suite Type</label>
-                        <select>
-                            <option>Classic Suite</option>
-                            <option>Prestige Suite</option>
-                            <option>Grand Royale Suite</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea rows="5" placeholder="Tell us about your requirements..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Request Private Tour</button>
-                </form>
+                        <div class="input-wrap">
+                            <label>Bespoke Requests</label>
+                            <textarea rows="3" placeholder="Dietary, medical or lifestyle requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-request">Request Private Portfolio</button>
+                    </form>
+                </div>
             </div>
         </section>
+    </main>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="logo-text" style="border: none; padding-left: 0; font-size: 1.5rem;">RESIDENCE<br><strong>BELLE VIE</strong></div>
-                <p style="color: var(--text-gray); margin-top: 25px; font-size: 0.9rem;">The global benchmark for luxury senior living and holistic medical care.</p>
+                <div class="logo-text" style="border: none; padding-left: 0;">RESIDENCE<br><strong>BELLE VIE</strong></div>
+                <p style="color: var(--text-gray); margin-top: 20px; font-size: 0.9rem;">The global benchmark for luxury senior living.</p>
             </div>
             <div class="footer-col">
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="index1.html">The Estate</a></li>
-                    <li><a href="packages.html">Care Packages</a></li>
-                    <li><a href="rooms.html">Suites</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="index.html">The Estate</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Experience</h4>
                 <ul>
-                    <li><a href="#">Fine Dining</a></li>
-                    <li><a href="#">Wellness & Spa</a></li>
-                    <li><a href="#">Medical Team</a></li>
-                    <li><a href="#">Private Events</a></li>
+                    <li><a href="#">Monaco Life</a></li>
+                    <li><a href="#">Wellness</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p style="color: var(--text-gray); margin-bottom: 20px; font-size: 0.85rem;">Subscribe to our quarterly journal.</p>
-                <input type="email" placeholder="YOUR EMAIL ADDRESS">
-                <button class="btn-sub">Subscribe</button>
+                <h4>Liaison</h4>
+                <p style="color: var(--text-gray); font-size: 0.8rem;">Place du Casino, Monte Carlo.</p>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 BELLE VIE RESIDENCE. ALL RIGHTS RESERVED. | PRIVACY POLICY
+        <div class="copyright" style="text-align: center; margin-top: 50px; color: #444; font-size: 0.7rem;">
+            &copy; 2026 BELLE VIE MONACO. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1200, once: true });</script>
+    <script>
+        AOS.init({ duration: 1500, once: true });
+
+        function updateForm(tier, price) {
+            // Update vizual carduri
+            document.querySelectorAll('.pkg-item').forEach(item => {
+                item.classList.remove('active');
+                if(item.querySelector('h3').innerText === tier) item.classList.add('active');
+            });
+            
+            // Update input formular
+            document.getElementById('selectedPkgDisplay').value = tier + " — " + price + "/mo";
+        }
+    </script>
 </body>
 </html>
-
-
